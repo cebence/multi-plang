@@ -18,12 +18,14 @@ And are also written in pure Java.
 Other modules are `Greeter` implementations in other Java-like programming languages, i.e. those that
 compile into a JVM-compatible binaries.
 
-`multi-plang-groovy` module is hosting a `Greeter` implemented in, wait for it... Groovy :-)
-The project has just one `*.groovy` file and gets packages into a JAR for deployment
+`multi-plang-groovy` module is hosting a `Greeter` implemented in, wait for it... Groovy :smile:
+This module has just one `*.groovy` file and gets packaged into a JAR for deployment
 into the application. Maven is configured to use the Groovy compiler, everything else is basically
 just as same as in a Java project.
 
 Similarly to the Groovy module, `multi-plang-kotlin` and `multi-plang-scala` are implemented in Kotlin and Scala, and are quite easy to setup to produce a JAR file.
+
+- [ ] Could also add a Clojure implementation (`multi-plang-clojure`).
 
 
 ## Build
