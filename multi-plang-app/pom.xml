@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>cebence.learning</groupId>
+		<artifactId>multi-plang</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>cebence.learning</groupId>
+	<artifactId>multi-plang-app</artifactId>
+	<packaging>jar</packaging>
+	<name>multi-plang application</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>cebence.learning</groupId>
+			<artifactId>multi-plang-api</artifactId>
+		</dependency>
+
+		<!--
+		The following dependencies are here just so they can be automatically
+		added to the classpath by Maven.
+		Otherwise the mere presence of these JARs in the classpath at runtime
+		would be enough.
+		-->
+		<dependency>
+			<groupId>cebence.learning</groupId>
+			<artifactId>multi-plang-groovy</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cebence.learning</groupId>
+			<artifactId>multi-plang-kotlin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cebence.learning</groupId>
+			<artifactId>multi-plang-scala</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/libs</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>libs/</classpathPrefix>
+							<mainClass>cebence.learning.multiplang.app.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
